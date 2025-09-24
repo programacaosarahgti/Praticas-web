@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+     <meta charset="utf-8">
+     <title>Praticando Javascript - Exercício Final</title>
+</head>
+<body>
+</body>
+     <script type="text/javascript">
+          // Funções matemáticas
+          function somar(a, b) {
+               return a + b;
+          }
+          function subtrair(a, b) {
+               return a - b;
+          }
+          function multiplicar(a, b) {
+               return a * b;
+          }
+          function dividir(a, b) {
+               if (b === 0) {
+                    return "Erro: divisão por zero não é permitida!";
+               }
+               return a / b;
+          }
+
+          // Menu inicial
+          var escolha = prompt("Escolha uma opção:\n1 - Apenas divisão\n2 - Calculadora completa");
+
+          if (escolha === "1") {
+               // Versão básica (apenas divisão)
+               var numero1 = parseInt(prompt("Digite o primeiro número inteiro positivo:"));
+               var numero2 = parseInt(prompt("Digite o segundo número inteiro positivo:"));
+               var resultado = dividir(numero1, numero2);
+               alert("O resultado da divisão é igual a: " + resultado);
+
+          } else if (escolha === "2") {
+               // Versão completa (4 operações)
+               var numero1 = parseInt(prompt("Digite o primeiro número inteiro positivo:"));
+               var numero2 = parseInt(prompt("Digite o segundo número inteiro positivo:"));
+               var operacao = prompt("Escolha a operação: +, -, * ou /");
+
+               var resultado;
+               if (operacao === "+") {
+                    resultado = somar(numero1, numero2);
+               } else if (operacao === "-") {
+                    resultado = subtrair(numero1, numero2);
+               } else if (operacao === "*") {
+                    resultado = multiplicar(numero1, numero2);
+               } else if (operacao === "/") {
+                    resultado = dividir(numero1, numero2);
+               } else {
+                    resultado = "Operação inválida!";
+               }
+
+               alert("O resultado da operação é igual a: " + resultado);
+
+          } else {
+               alert("Opção inválida! Atualize a página e tente novamente.");
+          }
+     </script>
+</html>

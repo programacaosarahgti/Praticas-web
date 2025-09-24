@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Educativo Interativo</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #ff6f61;
+            margin-top: 20px;
+        }
+        .game-container {
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        .score {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .feedback {
+            font-size: 22px;
+            margin-top: 15px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jogo Educativo Colorido!</h1>
+
+    <div class="game-container">
+        <p id="question">Clique no botão que tem a cor: <strong id="color-name">VERMELHO</strong></p>
+        <div id="buttons-container">
+            <!-- Botões serão adicionados via JavaScript -->
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <div class="score" id="score">Pontuação: 0</div>
+    </div>
+
+    <script>
+        const colors = ["VERMELHO", "AZUL", "AMARELO", "VERDE", "ROXO", "LARANJA"];
+        const colorValues = {
+            "VERMELHO": "#ff4d4d",
+            "AZUL": "#4da6ff",
+            "AMARELO": "#ffff66",
+            "VERDE": "#66ff66",
+            "ROXO": "#b366ff",
+            "LARANJA": "#ffb366"
+        };
+
+        let score = 0;
+
+        function generateButtons() {
+            const container = document.getElementById('buttons-container');
+            container.innerHTML = '';
+            const shuffledColors = colors.sort(() => Math.random() - 0.5);
+            shuffledColors.forEach(color => {
+                const btn = document.createElement('button');
+                btn.textContent = color;
+                btn.style.backgroundColor = colorValues[color];
+                btn.addEventListener('click', () => checkAnswer(color));
+                container.appendChild(btn);
+            });
+        }
+
+        function newQuestion() {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('color-name').textContent = randomColor;
+            generateButtons();
+            document.getElementById('feedback').textContent = '';
+        }
+
+        function checkAnswer(selectedColor) {
+            const correctColor = document.getElementById('color-name').textContent;
+            if (selectedColor === correctColor) {
+                score += 1;
+                document.getElementById('feedback').textContent = "✔ Acertou!";
+            } else {
+                document.getElementById('feedback').textContent = "❌ Tente novamente!";
+            }
+            document.getElementById('score').textContent = `Pontuação: ${score}`;
+            setTimeout(newQuestion, 1000);
+        }
+
+        // Inicializa o jogo
+        newQuestion();
+    </script>
+
+</body>
+</html>

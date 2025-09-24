@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite - Festa da Igreja</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #a8dadc, #48cae4);
+      font-family: Arial, sans-serif;
+      color: #1d3557;
+      text-align: center;
+      padding: 20px;
+    }
+    section { display: none; }
+    section.active { display: block; animation: fadeIn 0.6s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn-custom {
+      background: #1d3557;
+      color: #fff;
+      margin: 10px;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      transition: 0.3s;
+    }
+    .btn-custom:hover {
+      background: #457b9d;
+      transform: scale(1.05);
+    }
+    .card {
+      background: #f1faee;
+      color: #1d3557;
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    iframe {
+      border-radius: 15px;
+      width: 100%;
+      max-width: 600px;
+      height: 350px;
+    }
+    input, textarea {
+      border-radius: 10px;
+      border: 1px solid #457b9d;
+      padding: 10px;
+      width: 80%;
+      margin: 10px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu fixo -->
+  <nav class="mb-4">
+    <button class="btn-custom" onclick="mostrar('convite')">🏠 Convite</button>
+    <button class="btn-custom" onclick="mostrar('musicas')">🎵 Músicas</button>
+    <button class="btn-custom" onclick="mostrar('localizacao')">📍 Localização</button>
+    <button class="btn-custom" onclick="mostrar('contato')">📧 Contato</button>
+  </nav>
+
+  <!-- Seção Convite -->
+  <section id="convite" class="active">
+    <div class="card">
+      <h1>🎉 Convite Especial 🎶</h1>
+      <p>Você está convidado para a nossa <b>Festa da Igreja</b>!</p>
+      <p><b>Data:</b> 30 de Setembro de 2025</p>
+      <p><b>Local:</b> Igreja Esperança Viva</p>
+      <p>Uma noite de alegria, música e comunhão! 💙</p>
+    </div>
+  </section>
+
+  <!-- Seção Músicas -->
+  <section id="musicas">
+    <div class="card">
+      <h2>🎶 Música Especial 🎶</h2>
+      <p>Ouça essa canção que estará na nossa festa!</p>
+      <iframe src="https://www.youtube.com/embed/ijNCc7ICCck?si=vhykKtVfJ6wVCFFj" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Seção Localização -->
+  <section id="localizacao">
+    <div class="card">
+      <h2>📍 Localização</h2>
+      <p>Nosso evento será aqui:</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.9179124856346!2d-46.638813284474136!3d-23.508674065641515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce588a2bde3e6d%3A0x2b083af8c0c9314c!2sIgreja!5e0!3m2!1spt-BR!2sbr!4v1694441234567"
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Seção Contato -->
+  <section id="contato">
+    <div class="card">
+      <h2>📧 Entre em Contato</h2>
+      <form>
+        <input type="text" placeholder="Seu Nome" required>
+        <input type="email" placeholder="Seu Email" required>
+        <textarea rows="4" placeholder="Sua Mensagem"></textarea>
+        <button type="submit" class="btn-custom">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function mostrar(pagina) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(pagina).classList.add("active");
+    }
+  </script>
+</body>
+</html>
